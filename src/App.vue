@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Nav class="mb-6" />
+    <Card class="mb-6" />
   </div>
 </template>
 
 <script>
-  import Nav from './components/Nav.vue'
+  import Card from '@/components/Card.vue'
 
   export default {
     name: 'App',
     components: {
-      Nav
+      Card
     }
   }
 </script>

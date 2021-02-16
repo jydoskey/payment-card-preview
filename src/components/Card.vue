@@ -3,18 +3,35 @@
     <div class="flex items-center justify-center bg-gray-50 py-20 px-4 sm:px-6 lg:px-20">
       <div class="max-w-md w-full space-y-8">
         <form class="mt-8 space-y-8" action="#" method="POST">
-          <div class="shadow-sm w-72">
+          <div class=" w-80">
             <div class="">
-              <label for="card-name" class="sr-only">Card Name</label>
+              <span class="text-gray-500">Card Name</span>
               <input id="card-name" name="card-name" type="text" required
-                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Card Name">
+                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
             </div>
             <div class="pt-2">
-              <label for="card-number" class="sr-only">Card Number</label>
+              <span class="text-gray-500">Card Number</span>
               <input id="card-number" name="card-number" type="number" required
-                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Card Number">
+                class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
+            </div>
+            <div class="pt-2">
+              <span class="text-gray-500">Expiration Date</span>
+              <div class="flex">
+                <label class="block">
+                  <select class="w-32 h-9 mt-1 mr-2 border">
+                    <option>Month</option>
+                  </select>
+                </label>
+                <label class="block">
+                  <select class="w-28 h-9 mt-1 mr-2 border">
+                    <option>Year</option>
+                  </select>
+                </label>
+                <label>
+                  <input id="cvv" name="cvv" type="text" required
+                class="appearance-none rounded-none relative block mt-1 h-9 w-16 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
+                </label>
+              </div>
             </div>
           </div>
           <div>

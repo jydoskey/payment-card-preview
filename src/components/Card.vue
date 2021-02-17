@@ -18,18 +18,20 @@
               <span class="text-gray-500">Expiration Date</span>
               <div class="flex">
                 <label class="block">
-                  <select class="w-32 h-9 mt-1 mr-2 border">
-                    <option>Month</option>
+                  <select v-model="expirationMonth" class="w-32 h-9 mt-1 mr-2 border">
+                    <option value="" disabled>Month</option>
+                    <option v-for="month in months" :key="month.id" :value="month.id">{{month}}</option>
                   </select>
                 </label>
                 <label class="block">
-                  <select class="w-28 h-9 mt-1 mr-2 border">
-                    <option>Year</option>
+                  <select v-model="expirationYear" class="w-28 h-9 mt-1 mr-2 border">
+                    <option value="" disabled>Year</option>
+                    <option v-for="year in years" :key="year.id" :value="year.id">{{year}}</option>
                   </select>
                 </label>
                 <label>
                   <input id="cvv" name="cvv" type="text" required
-                class="appearance-none rounded-none relative block mt-1 h-9 w-16 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
+                    class="appearance-none rounded-none relative block mt-1 h-9 w-16 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
                 </label>
               </div>
             </div>
@@ -56,6 +58,19 @@
 
 <script>
   export default {
-    name: 'Card'
+    name: 'Card',
+    data() {
+      return {
+        expirationMonth: '',
+        expirationYear: '',
+        months: [
+          'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+          'November', 'December'
+        ],
+        years: [
+          2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030
+        ]
+      }
+    },
   }
 </script>

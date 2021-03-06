@@ -30,7 +30,7 @@
                   </select>
                 </label>
                 <label>
-                  <input id="cvv" name="cvv" type="text" required
+                  <input id="cvv" v-model="cvv" name="cvv" type="text" required
                     class="appearance-none rounded-none relative block mt-1 h-9 w-16 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
                 </label>
               </div>
@@ -63,6 +63,7 @@
       return {
         expirationMonth: '',
         expirationYear: '',
+        cvv: '',
         months: [
           'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
           'November', 'December'

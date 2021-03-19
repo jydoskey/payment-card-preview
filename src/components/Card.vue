@@ -1,18 +1,22 @@
 <template>
-  <container class="flex items-center justify-center flex-wrap bg-blue-500 p-6 h-screen">
+  <section class="flex items-center justify-center flex-wrap bg-blue-500 p-6 h-screen">
     <div class="flex items-center justify-center bg-gray-50 pb-10 px-4 sm:px-6 lg:px-20">
       <div class="max-w-md w-full space-y-8">
-        <img src="@/assets/credit-card.png" class="w-80 h-80 -mb-14 -mt-32" alt="">
-        <form action="#" method="POST">
+        <div>
+          <img src="@/assets/credit-card.png" class="w-80 h-80 -mb-10 -mt-32" alt="">
+          <p class="card-number">{{numberSpace(cardNumber) || 'XXXX XXXX XXXX XXXX'}}</p>
+          <p class="uppercase card-name">{{cardName}}</p>
+        </div>
+        <form autocomplete="off">
           <div class="w-80">
             <div class="">
               <span class="text-gray-500">Card Name</span>
-              <input id="card-name" name="card-name" type="text" required
+              <input v-model="cardName" id="cardName" name="cardName" type="text" required
                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
             </div>
             <div class="pt-2">
               <span class="text-gray-500">Card Number</span>
-              <input id="card-number" name="card-number" type="number" required
+              <input v-model="cardNumber" maxlength="16" id="cardNumber" name="cardNumber" type="number" required
                 class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm">
             </div>
             <div class="pt-2">
@@ -21,13 +25,13 @@
                 <label class="block">
                   <select v-model="expirationMonth" class="w-32 h-9 mt-1 mr-2 border">
                     <option value="" disabled>Month</option>
-                    <option v-for="month in months" :key="month.id" :value="month.id">{{month}}</option>
+                    <option v-for="mth in mths" :key="mth.id" :value="mth.id">{{mth}}</option>
                   </select>
                 </label>
                 <label class="block">
                   <select v-model="expirationYear" class="w-28 h-9 mt-1 mr-2 border">
                     <option value="" disabled>Year</option>
-                    <option v-for="year in years" :key="year.id" :value="year.id">{{year}}</option>
+                    <option v-for="period in periods" :key="period.id" :value="period.id">{{period}}</option>
                   </select>
                 </label>
                 <label>
@@ -54,7 +58,7 @@
         </form>
       </div>
     </div>
-  </container>
+  </section>
 </template>
 
 <script>
@@ -65,14 +69,39 @@
         expirationMonth: '',
         expirationYear: '',
         cvv: '',
-        months: [
+        cardName: '',
+        cardNumber: '',
+        mths: [
           'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
           'November', 'December'
         ],
-        years: [
+        periods: [
           2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030
         ]
       }
     },
+    methods: {
+      numberSpace(x) {
+        return x.toString().replace(/\B(?=(\d{4})+(?!\d))/g, " ");
+      }
+    },
   }
 </script>
+<style scoped>
+  img {
+    position: relative;
+  }
+
+  .card-name {
+    position: absolute;
+    top: 195px;
+    margin-left: 1.5rem;
+  }
+
+  .card-number {
+    position: absolute;
+    top: 135px;
+    left: 39%;
+    font-size: 20px;
+  }
+</style>

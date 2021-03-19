@@ -5,6 +5,7 @@
         <div>
           <img src="@/assets/credit-card.png" class="w-80 h-80 -mb-10 -mt-32" alt="">
           <p class="card-number">{{numberSpace(cardNumber) || 'XXXX XXXX XXXX XXXX'}}</p>
+          <p class="card-year">valid thru: {{changemths(expirationMonth) || 'MM'}}/{{expirationYear || 'YY'}}</p>
           <p class="uppercase card-name">{{cardName}}</p>
         </div>
         <form autocomplete="off">
@@ -25,13 +26,13 @@
                 <label class="block">
                   <select v-model="expirationMonth" class="w-32 h-9 mt-1 mr-2 border">
                     <option value="" disabled>Month</option>
-                    <option v-for="mth in mths" :key="mth.id" :value="mth.id">{{mth}}</option>
+                    <option v-for="mth in mths" :key="mth.id">{{mth}}</option>
                   </select>
                 </label>
                 <label class="block">
                   <select v-model="expirationYear" class="w-28 h-9 mt-1 mr-2 border">
                     <option value="" disabled>Year</option>
-                    <option v-for="period in periods" :key="period.id" :value="period.id">{{period}}</option>
+                    <option v-for="period in periods" :key="period.id">{{period}}</option>
                   </select>
                 </label>
                 <label>
@@ -83,7 +84,34 @@
     methods: {
       numberSpace(x) {
         return x.toString().replace(/\B(?=(\d{4})+(?!\d))/g, " ");
-      }
+      },
+      changemths(value) {
+        if (value == "January") {
+          return value = "01";
+        } else if (value == "February") {
+          return value = "02";
+        } else if (value == "March") {
+          return value = "03";
+        } else if (value == "April") {
+          return value = "04";
+        } else if (value == "May") {
+          return value = "05";
+        } else if (value == "June") {
+          return value = "06";
+        } else if (value == "July") {
+          return value = "07";
+        } else if (value == "August") {
+          return value = "08";
+        } else if (value == "September") {
+          return value = "09";
+        } else if (value == "October") {
+          return value = "10";
+        } else if (value == "November") {
+          return value = "11";
+        } else if (value == "December") {
+          return value = "12";
+        }
+      },
     },
   }
 </script>
@@ -92,16 +120,23 @@
     position: relative;
   }
 
-  .card-name {
-    position: absolute;
-    top: 195px;
-    margin-left: 1.5rem;
-  }
-
   .card-number {
     position: absolute;
     top: 135px;
     left: 39%;
-    font-size: 20px;
+    font-size: 24px;
+  }
+
+  .card-year {
+    position: absolute;
+    top: 170px;
+    left: 45%;
+    text-align: center;
+  }
+
+  .card-name {
+    position: absolute;
+    top: 195px;
+    margin-left: 1.5rem;
   }
 </style>
